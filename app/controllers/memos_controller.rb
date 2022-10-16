@@ -34,6 +34,9 @@ class MemosController < ApplicationController
     def destroy
     end
 
+    def confirm
+    end
+
     private
     def get_memo
         @memo = Memo.find(params[:id])

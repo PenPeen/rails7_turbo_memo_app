@@ -1,12 +1,26 @@
-<div class=<%="memo#{memo.id}"%>>
+<div id=<%="memo#{memo.id}" %>, class="memo-list-edit">
 <%= link_to edit_memo_path(memo), data:{turbo_frame: "memo-contents"} do %>
     <% if memo.content === nil %>
-        <div>新規メモ</div>
-        <div><%= l memo.created_at %></div>
+        <div>
+            <div>新規メモ</div>
+            <div><%= l memo.created_at %></div>
+        </div>
+
+        <%= link_to memos_confirm_path, class: "memo-list-edit-link", data:{turbo_frame: "modal"} do %>
+            <%= image_tag "delete_memo.png", class:"memo-list-edit-img" %>
+        <% end %>
+
     <% else %>
         <%# 文字は切り捨てて表示 %>
-        <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
-        <div><%= l memo.created_at %></div>
+        <div>
+            <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
+            <div><%= l memo.created_at %></div>
+        </div>
+
+        <%= link_to memos_confirm_path, class: "memo-list-edit-link", data:{turbo_frame: "modal"} do %>
+            <%= image_tag "delete_memo.png", class:"memo-list-edit-img" %>
+        <% end %>
+        
     <% end %>
 <% end %>
 </div>
