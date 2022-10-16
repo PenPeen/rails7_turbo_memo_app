@@ -1,30 +1,30 @@
+<%= render partial: "memos/partial/header" %>
+
 <div class="content">
+    
     <div class="memo-nav">
         <%= turbo_frame_tag "memo-list" do %>
             <div class="memo-search">
                 <input type="text">
             </div>
 
-            <div class="memo-list">
-                <%= render @memos %>
+            <div>
+                <%= link_to  memos_path, data: {turbo_method: :post}, class: "memo-new" do %>
+                    新規作成
+                    <%= image_tag 'new_memo.png', class: "memo-new-img" %>
+                <% end %>
             </div>
 
-            <div>
-                <%= link_to "新規作成", memos_path, data: {turbo_method: :post} %>
-            </div>
+            <div class="memo-list"><%= render @memos %></div>
         <% end %>
     </div>
 
     <div class="memo-contents">
         <%= turbo_frame_tag "memo-contents" do %>
             <div>
-                contents
-                <%# render @memo %>
+                <%= render partial: "memos/partial/contents" if !@memos.empty? %>
             </div>
         <% end %>
     </div>
 
 </div>
-
-
-

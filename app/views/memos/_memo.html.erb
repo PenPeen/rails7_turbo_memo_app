@@ -4,7 +4,8 @@
         <div>新規メモ</div>
         <div><%= memo.created_at %></div>
     <% else %>
-        <div><%= memo.content %></div>
+        <%# 文字は切り捨てて表示 %>
+        <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
         <div><%= memo.created_at %></div>
     <% end %>
 <% end %>

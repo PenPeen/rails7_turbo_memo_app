@@ -1,8 +1,9 @@
 class MemosController < ApplicationController
-    before_action :get_memo, only: [:show, :edit, :destroy]
+    before_action :get_memo, only: [:show, :edit, :update, :destroy]
 
     def index
-        @memos = Memo.all
+        @memos = Memo.all.order(created_at: :desc)
+        @memo = Memo.last
     end
 
     def show
@@ -15,7 +16,9 @@ class MemosController < ApplicationController
     def create
         @memo = Memo.new
         @memo.save!
-        # redirect_to new_memo_path
+
+        # toast
+        
         redirect_to root_path
     end
 
@@ -23,6 +26,9 @@ class MemosController < ApplicationController
     end
 
     def update
+        # バリデーションがないため、保存
+        @memo.update(memo_params)
+        redirect_to root_path
     end
 
     def destroy
@@ -31,5 +37,9 @@ class MemosController < ApplicationController
     private
     def get_memo
         @memo = Memo.find(params[:id])
+    end
+
+    def memo_params
+        params.require(:memo).permit(:content)
     end
 end
