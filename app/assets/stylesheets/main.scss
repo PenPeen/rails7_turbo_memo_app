@@ -1,47 +1,77 @@
 /**
 * Turbo-Framesの見える化
 */
-turbo-frame {
-    border: 1px red solid;
-    display: block;
-}
+// turbo-frame {
+//     border: 1px red solid;
+//     display: block;
+// }
 
-turbo-frame::before {
-    content: "Frame: #" attr(id);
-    position: relative;
-    top: -14px;
-    right: -4px;
-    display: inline-block;
-    color: red;
-    font-size: 12px;
-    z-index: 9999;
-    background-color: white;
-    padding: 4px;
-    border: 1px red solid;
+// turbo-frame::before {
+//     content: "Frame: #" attr(id);
+//     position: relative;
+//     top: -14px;
+//     right: -4px;
+//     display: inline-block;
+//     color: red;
+//     font-size: 12px;
+//     z-index: 9999;
+//     background-color: white;
+//     padding: 4px;
+//     border: 1px red solid;
+// }
+
+html,
+body{
+    height: 100vh;
 }
 
 body{
-    margin: 0;
+    margin: 0 0 2% 0;
+    box-sizing: border-box;
     
     & .content{
+        padding: 1% 0 0 0;
+        margin: 0 2% 0 2%;
+        border-bottom: 1px solid grey;
         display: flex;
-        // min-height: 100vh;
+        height: 80%;
+        overflow: scroll;
+        overflow-x: hidden;
     }
     
     & .memo-{
         &nav{
             flex-basis: 30%;
-            // min-height: 100vh;
+            overflow: scroll;
+            overflow-x: hidden;
             & .memo-list{
                 & [class^="memo"]{
                     border-bottom: 1px solid;
+                    padding: 12px 0 12px 0;
+                    & a{
+                        color: grey;
+                        font-weight: 500;
+                        text-decoration: none;
+                    }
                 }
+            }
+        }
+
+        &new{
+            display: flex;
+            align-items: center;
+            margin: 2% 0 2% 0;
+
+            &-img{
+                margin-left:3%;
+                max-width:8%;
             }
         }
         
         &contents{
             flex-basis: 70%;
-            // min-height: 100vh;
+            overflow: scroll;
+            overflow-x: hidden;
         }
         
         &form{
@@ -51,7 +81,73 @@ body{
         &field{
             width:100%;
             min-height: 100vh;
+            font-size: 16px;
         }
     }
     
 }
+
+
+/* 
+** The Header Media Queries **
+** Tweak as per your needs **
+*/
+.brand {
+    font-weight: bold;
+    font-size: 20px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.site-header {
+    background-color: #def7ff; 
+    padding: 0 2% 0 2%;
+    height: 10%;
+}
+
+.site-header__wrapper {
+padding-top: 1rem;
+padding-bottom: 1rem; }
+@media (min-width: 600px) {
+    .site-header__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0; 
+        height: 100%;
+    } 
+}
+@media (min-width: 600px) {
+.nav__wrapper {
+    display: flex; } }
+
+@media (max-width: 599px) {
+.nav__wrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #d9f0f7;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
+    .nav__wrapper.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); } }
+
+.nav__item a {
+display: block;
+padding: 1.5rem 1rem; }
+
+.nav__toggle {
+display: none; }
+@media (max-width: 599px) {
+    .nav__toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem; } }
