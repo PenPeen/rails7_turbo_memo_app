@@ -1,0 +1,52 @@
+/**
+* Turbo-Framesの見える化
+*/
+turbo-frame {
+    border: 1px red solid;
+    display: block;
+}
+
+turbo-frame::before {
+    content: "Frame: #" attr(id);
+    position: relative;
+    top: -14px;
+    right: -4px;
+    display: inline-block;
+    color: red;
+    font-size: 12px;
+    z-index: 9999;
+    background-color: white;
+    padding: 4px;
+    border: 1px red solid;
+}
+
+body{
+    margin: 0;
+    
+    & .content{
+        display: flex;
+        // min-height: 100vh;
+    }
+    
+    & .memo-{
+        &nav{
+            flex-basis: 30%;
+            // min-height: 100vh;
+        }
+        
+        &contents{
+            flex-basis: 70%;
+            // min-height: 100vh;
+        }
+        
+        &form{
+            min-height: 100vh;
+            min-width: 100vh;
+        }
+        &field{
+            width:100%;
+            min-height: 100vh;
+        }
+    }
+    
+}

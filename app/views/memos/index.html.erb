@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="memo-nav">
+        <%= turbo_frame_tag "memo-list" do %>
+            <div class="memo-search">
+                <input type="text">
+            </div>
+
+            <div class="memo-list">
+                <%= render @memos %>
+            </div>
+
+            <%= turbo_frame_tag "memo" do %>
+                <%= link_to "新規作成", memos_path, data: {turbo_method: :post} %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div class="memo-contents">
+        <%= turbo_frame_tag "memo-contents" do %>
+            <div>
+                contents
+                <%# render @memo %>
+            </div>
+        <% end %>
+    </div>
+
+</div>
+
+
+

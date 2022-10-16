@@ -1,0 +1,9 @@
+<%= link_to memo_path(memo) do %>
+    <% if memo.content === nil %>
+        <div>新規メモ</div>
+        <div><%= memo.created_at %></div>
+    <% else %>
+        <%= memo.content %>
+        <%= memo.created_at %>
+    <% end %>
+<% end %>
