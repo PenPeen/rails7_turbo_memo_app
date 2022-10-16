@@ -1,9 +1,11 @@
-<%= link_to memo_path(memo) do %>
+<div class=<%="memo#{memo.id}"%>>
+<%= link_to edit_memo_path(memo), data:{turbo_frame: "memo-contents"} do %>
     <% if memo.content === nil %>
         <div>新規メモ</div>
         <div><%= memo.created_at %></div>
     <% else %>
-        <%= memo.content %>
-        <%= memo.created_at %>
+        <div><%= memo.content %></div>
+        <div><%= memo.created_at %></div>
     <% end %>
 <% end %>
+</div>

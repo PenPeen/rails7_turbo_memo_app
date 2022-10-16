@@ -32,6 +32,11 @@ body{
         &nav{
             flex-basis: 30%;
             // min-height: 100vh;
+            & .memo-list{
+                & [class^="memo"]{
+                    border-bottom: 1px solid;
+                }
+            }
         }
         
         &contents{

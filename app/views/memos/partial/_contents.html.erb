@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "memo-contents" do %>
+    <%= form_with model: @memo, class:"memo-form" do |f| %>
+        <%= f.text_area :content, class: "memo-field" %>
+    <% end %>
+<% end %>

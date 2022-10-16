@@ -9,9 +9,9 @@
                 <%= render @memos %>
             </div>
 
-            <%= turbo_frame_tag "memo" do %>
+            <div>
                 <%= link_to "新規作成", memos_path, data: {turbo_method: :post} %>
-            <% end %>
+            </div>
         <% end %>
     </div>
 
