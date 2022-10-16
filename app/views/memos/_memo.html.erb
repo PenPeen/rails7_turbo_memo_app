@@ -2,11 +2,11 @@
 <%= link_to edit_memo_path(memo), data:{turbo_frame: "memo-contents"} do %>
     <% if memo.content === nil %>
         <div>新規メモ</div>
-        <div><%= memo.created_at %></div>
+        <div><%= l memo.created_at %></div>
     <% else %>
         <%# 文字は切り捨てて表示 %>
         <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
-        <div><%= memo.created_at %></div>
+        <div><%= l memo.created_at %></div>
     <% end %>
 <% end %>
 </div>
