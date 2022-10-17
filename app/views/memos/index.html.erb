@@ -5,25 +5,25 @@
     <div class="memo-nav">
         <%= turbo_frame_tag "memo-list" do %>
             <div class="memo-search">
-                <input type="text">
+                <label for="text2">検索</label>
+                <div class="search_bar">
+                    <i class="fas fa-search search_icon"></i>
+                    <input id="text2" type="text" placeholder="キーワードを入力">
+                    <i class="fas fa-times search_icon"></i>
+                </div>
             </div>
 
-            <div>
-                <%= link_to  memos_path, data: {turbo_method: :post}, class: "memo-new" do %>
-                    新規作成
-                    <%= image_tag 'new_memo.png', class: "memo-new-img" %>
-                <% end %>
+            <div class="memo-new">
+                <%= link_to "新規作成", memos_path, data: {turbo_method: :post}, class: "memo-new-button" %>
             </div>
 
             <div class="memo-list"><%= render @memos %></div>
         <% end %>
     </div>
 
-    <div class="memo-contents">
+    <div id="contents" class="memo-contents">
         <%= turbo_frame_tag "memo-contents" do %>
-            <div>
-                <%= render partial: "memos/partial/contents" if !@memos.empty? %>
-            </div>
+            <%= render partial: "memos/partial/contents", locals: {memo: @memo} if !@memos.empty? %>
         <% end %>
     </div>
 

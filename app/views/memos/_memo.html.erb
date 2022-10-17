@@ -1,12 +1,19 @@
-<div class=<%="memo#{memo.id}"%>>
-<%= link_to edit_memo_path(memo), data:{turbo_frame: "memo-contents"} do %>
-    <% if memo.content === nil %>
-        <div>新規メモ</div>
-        <div><%= memo.created_at %></div>
-    <% else %>
-        <%# 文字は切り捨てて表示 %>
-        <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
-        <div><%= memo.created_at %></div>
+<%# ID指定（Turboが解釈できるよう[モデル名_id]で命名） %>
+<div id=<%="memo_#{memo.id}"%> class="memo-list-edit">
+    <%= link_to edit_memo_path(memo), data:{turbo_frame: "memo-contents"} do %>
+        <div>
+            <% if memo.content === nil %>
+                <div>新規メモ</div>
+            <% else %>
+                <div><%= truncate(memo.content, length: 15, omission: "...") %></div>
+            <% end %>
+            <div><%= l memo.created_at %></div>
+        </div>
+
+        <%= link_to memos_confirm_path(id: memo.id), class: "memo-list-edit-link", data:{turbo_frame: "modal"} do %>
+            <%= image_tag "delete_memo.png", class:"memo-list-edit-img" %>
+        <% end %>
+
     <% end %>
-<% end %>
 </div>
+        
