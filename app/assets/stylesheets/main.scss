@@ -35,8 +35,6 @@ body{
         border-bottom: 1px solid grey;
         display: flex;
         height: 80%;
-        overflow: scroll;
-        overflow-x: hidden;
     }
     
     & .memo-{
@@ -44,7 +42,7 @@ body{
             flex-basis: 30%;
             
             & .memo-list{
-                max-height: 100%;
+                max-height: 75%;
                 overflow: scroll;
                 overflow-x: hidden;
 
@@ -111,15 +109,23 @@ body{
         
         &contents{
             flex-basis: 70%;
+
+            & turbo-frame{
+                height: 100%;
+            }
         }
         
         &form{
             // min-height: 100vh;
             // min-width: 100vh;
+            height:100%;
         }
         &field{
             width:100%;
-            min-height: 100vh;
+            height:100%;
+            min-height: 100%;
+            box-sizing: border-box;
+            // min-height: 100vh;
             font-size: 16px;
         }
     }
