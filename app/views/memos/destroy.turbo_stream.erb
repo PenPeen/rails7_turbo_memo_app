@@ -4,15 +4,15 @@
 <%# メモ内容の更新（次のリストの内容、次がなければ、前。 他にメモがなければ、Clear） %>
 <% if !@prev_memo.nil? %>
     <%#= turbo_stream.update "memo_contents", render partial: "memos/partial/contents", locals: {@memo: @next_memo} %>
-    <%= turbo_stream.update "memo_contents" do %>
+    <%= turbo_stream.update "memo-contents" do %>
         <%= render partial: "memos/partial/contents", locals: {memo: @prev_memo} %>
     <% end %>
 <% elsif !@next_memo.nil? %>
-    <%= turbo_stream.update "memo_contents" do %>
+    <%= turbo_stream.update "memo-contents" do %>
         <%= render partial: "memos/partial/contents", locals: {memo: @next_memo} %>
     <% end %>
 <% else %>
-    <%= turbo_stream.update "memo_contents", "" %>
+    <%= turbo_stream.update "memo-contents", "" %>
 <% end %>
 <%# Toastの表示 %>
 <%#= turbo_stream.update %>

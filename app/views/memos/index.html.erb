@@ -21,8 +21,10 @@
         <% end %>
     </div>
 
-    <div id="memo_contents" class="memo-contents">
-        <%= render partial: "memos/partial/contents", locals: {memo: @memo} if !@memos.empty? %>
+    <div id="contents" class="memo-contents">
+        <%= turbo_frame_tag "memo-contents" do %>
+            <%= render partial: "memos/partial/contents", locals: {memo: @memo} if !@memos.empty? %>
+        <% end %>
     </div>
 
 </div>

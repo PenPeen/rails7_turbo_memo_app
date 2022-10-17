@@ -37,6 +37,8 @@ class MemosController < ApplicationController
         @prev_memo = @memo.previous
         
         @memo.destroy
+
+        # binding.pry
     end
 
     def confirm
