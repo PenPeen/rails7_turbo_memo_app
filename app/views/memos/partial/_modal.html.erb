@@ -10,7 +10,11 @@
             </header>
             <main class="modal__content" id="modal-1-content">
                 <p>
-                trying to delete the memo"<%= truncate(@memo.content, length: 15, omission: "...") %>"<br>
+                <% if @memo.content.blank? %>
+                trying to delete the memo "新規メモ"<br>
+                <% else %>
+                trying to delete the memo "<%= truncate(@memo.content, length: 15, omission: "...") %>"<br>
+                <% end %>
                 本当にOK？
                 </p>
             </main>

@@ -1,3 +1,5 @@
 <%= turbo_frame_tag "memo-list" do %>
-    <div class="memo-list"><%= render @memos %></div>
+    <% if !@memos.nil? %>
+        <div class="memo-list"><%= render @memos %></div>
+    <% end %>
 <% end %>

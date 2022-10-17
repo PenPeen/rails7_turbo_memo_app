@@ -45,7 +45,7 @@ class MemosController < ApplicationController
 
     # メモの検索
     def search
-        @memos = Memo.where("content LIKE?","%#{params[:word]}%")
+        @memos = Memo.search(params[:word])
     end
 
     private
