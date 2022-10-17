@@ -32,9 +32,15 @@ class MemosController < ApplicationController
     end
 
     def destroy
+        # destroy.turbo_stream.erbで使用
+        @next_memo = @memo.next
+        @prev_memo = @memo.previous
+        
+        @memo.destroy
     end
 
     def confirm
+        @memo = Memo.find(params[:id])
     end
 
     private

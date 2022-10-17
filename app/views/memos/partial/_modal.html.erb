@@ -4,17 +4,21 @@
             <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
             <header class="modal__header">
                 <h2 class="modal__title" id="modal-1-title">
-                Micromodal
+                    Confirm
                 </h2>
                 <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
             <main class="modal__content" id="modal-1-content">
                 <p>
-                Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
+                trying to delete the memo"<%= truncate(@memo.content, length: 15, omission: "...") %>"<br>
+                本当にOK？
                 </p>
             </main>
             <footer class="modal__footer">
-                <button class="modal__btn modal__btn-primary">Continue</button>
+                <%= link_to memo_path(@memo), data:{turbo_method: :delete, turbo_frame: "memo-list"} do %>
+                    <%# Stimulusコントローラー アクション登録 %>
+                    <button class="modal__btn modal__btn-primary" data-action="click->modal#close">OK</button>
+                <% end %>
                 <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
             </footer>
             </div>

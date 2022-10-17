@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "memos#index"
   resources :memos, only: [:index, :create, :edit, :update, :destroy]
-  get 'memos/confirm', to: 'memos#confirm'
+  get 'memos/confirm/:id', to: 'memos#confirm', as: 'memos_confirm'
 end
