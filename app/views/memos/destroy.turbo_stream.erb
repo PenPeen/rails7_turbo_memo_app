@@ -1,18 +1,23 @@
 <%# Listの更新（メモ内容の削除） %>
 <%= turbo_stream.remove @memo %>
 
-<%# メモ内容の更新（次のリストの内容、次がなければ、前。 他にメモがなければ、Clear） %>
+<%# 画面の更新 %>
+<%# 後ろにメモがある場合 %>
 <% if !@prev_memo.nil? %>
-    <%#= turbo_stream.update "memo_contents", render partial: "memos/partial/contents", locals: {@memo: @next_memo} %>
     <%= turbo_stream.update "memo-contents" do %>
         <%= render partial: "memos/partial/contents", locals: {memo: @prev_memo} %>
     <% end %>
+    
+<%# 前にメモがある場合 %>
 <% elsif !@next_memo.nil? %>
     <%= turbo_stream.update "memo-contents" do %>
         <%= render partial: "memos/partial/contents", locals: {memo: @next_memo} %>
     <% end %>
+    
+<%# 他にメモがない場合 %>
 <% else %>
     <%= turbo_stream.update "memo-contents", "" %>
 <% end %>
+
 <%# Toastの表示 %>
 <%#= turbo_stream.update %>

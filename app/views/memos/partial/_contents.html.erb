@@ -1,4 +1,4 @@
-
+<%# メモ更新用フォームテンプレート %>
 <%= form_with model: memo, data:{controller: "memo_form", turbo_frame: "memo-list"}, class:"memo-form" do |f| %>
     <%= f.text_area :content, data: {action: "input->memo_form#submit"} , placeholder: "入力", class: "memo-field" %>
 <% end %>
