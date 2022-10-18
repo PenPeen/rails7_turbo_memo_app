@@ -6,13 +6,6 @@ class MemosController < ApplicationController
         @memo = Memo.last
     end
 
-    def show
-    end
-    
-    def new
-        @memo = Memo.new
-    end
-
     # Toast対応（Turbo Streams検討中）
     def create
         @memo = Memo.new
@@ -51,7 +44,10 @@ class MemosController < ApplicationController
     private
     # メモ情報の取得
     def get_memo
-        @memo = Memo.find(params[:id])
+        @memo = Memo.find_by(id: params[:id])
+
+        # 項目が見つからない場合はTOPへリダイレクト
+        redirect_to root_path if @memo.nil?
     end
 
     # ストロングパラメータ
