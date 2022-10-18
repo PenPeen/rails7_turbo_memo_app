@@ -1,5 +1,6 @@
 class Memo < ApplicationRecord
 
+    # コンテンツ検索機能
     def self.search(word)
         Memo.where("content LIKE?","%#{word}%")
     end
