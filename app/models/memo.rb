@@ -1,11 +1,9 @@
 class Memo < ApplicationRecord
-
     # コンテンツ検索機能
-    def self.search(word)
-        Memo.where("content LIKE?","%#{word}%")
-    end
+    scope :search,->(word){Memo.where("content LIKE?","%#{word}%")}
 
     # 前のレコードを検索
+    # scope -> クラスメソッドと近い（同じではない）振る舞いのため、インスタンスメソッドのscope化は不可
     def previous
         Memo.where("id < ?", self.id).order("id DESC").first
     end
