@@ -3,7 +3,7 @@
 <div class="content">
     
     <div class="memo-nav">
-        <%=form_with url: memos_search_path, data:{turbo_frame: "memo-list", controller: "search", action: "input->search#submit"}, method: :get do |f| %>
+        <%=form_with url: memos_search_path, data:{turbo_frame: "memo-list", turbo_action: :advance , controller: "search", action: "input->search#submit"}, method: :get do |f| %>
             <div class="memo-search">
                 <label for="text2">検索</label>
                 <div class="search_bar">
